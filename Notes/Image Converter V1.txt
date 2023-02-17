@@ -1,0 +1,249 @@
+<!--////////////////////////////////////////////////////////////////////////
+//  Matthew Kavanagh 
+// 
+//  KavaNet 
+//  Image Coverter.html
+//  *********
+//////////////////////////////////////////////////////////////////////// -->
+<!DOCTYPE html>
+
+<html>
+<head>
+  <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+  <link rel="apple-touch-icon"                               href="img/touch-icon-iphone.png" /> 
+  <link rel="icon"             sizes="http://192xhttp://192" href="img/touch-icon.png" /> 
+  <link rel="apple-touch-icon" sizes="76x76"                 href="img/touch-icon-ipad.png" /> 
+  <link rel="apple-touch-icon" sizes="120x120"               href="img/touch-icon-iphone-retina.png" />
+  <link rel="apple-touch-icon" sizes="152x152"               href="img/touch-icon-ipad-retina.png" /> 
+  <link rel="shortcut icon"    type="image/x-icon"           href="img/favicon.ico" />
+  <link rel="stylesheet"       type="text/css"               href="css/bootstrap.min.css">
+  <link rel="stylesheet"       type="text/css"               href="css/main.min.css">
+  <link rel="stylesheet"       type="text/css"               href="css/myStyles.css">
+  <link rel="stylesheet"       type="text/css"               href="css/pe-icon-7-filled.css">
+  <link rel="stylesheet"       type="text/css"               href="css/pe-icon-7-stroke.css">
+  <title>Image Converter</title>    
+  </style>
+</head>
+
+
+<body>
+  <header class="top-bar">    
+    <div class="profile"> 
+      <div class="col-md-4">
+        <h1 class = "Nest_Name">KavaNet Control Panel</h1>
+      </div>
+
+      <div class="col-md-4">
+        <p class = "Pull_Middle" id="Web_Time">Time</p>
+      </div>
+
+      <div class="col-md-4">
+        <p class = "Pull_Right" id="System_Network">WiFi Network</p>
+      </div>
+    </div>    
+  </header>
+
+
+  <div class="wrapper">
+    <aside class="sidebar">
+      <ul class="main-nav">
+        <li>
+          <a class="main-nav__link" href="Index.html">
+            <!-- <span class="main-nav__icon"><i class="pe-7f-helm"></i></span> -->
+            <p class="Menu">Controls</p>
+          </a>
+        </li>
+
+        <li>
+          <a class="main-nav__link" href="System.html">
+            <!-- <span class="main-nav__icon"><i class="pe-7s-science"></i></span> -->
+            <p class="Menu">Sensor Data</p>
+          </a>
+        </li>
+
+        <li class="main-nav--active">
+          <a class="main-nav__link" href="#">
+            <!-- <span class="main-nav__icon"><i class="pe-7s-science"></i></span> -->
+            <p class="Menu">Poi Image Converter</p>
+          </a>
+        </li>
+      </ul> <!-- /main-nav -->      
+    </aside> <!-- /sidebar -->
+
+
+
+  <section class="content">
+    <div class="col-md-4 col-md-offset-1 text-center"> <!-- Input -->
+      <article class="widget widget__form"> 
+        <header class="widget__header">
+          <div class="widget__title">
+            <h3>File Input</h3>
+          </div>
+        </header>
+
+        <div class="widget__content filled widget-ui">
+          <div class="row">
+            <div class="col-md-12">
+              <p align="center"><img id="inputImage"/></p>
+              <p align="center"><input name="my-image" onchange="readPic(this);" type="file"/></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 col-md-offset-0">
+              <div class="widget__title">
+              <h3>Output width</h3>
+              </div>
+            </div>
+            <div class="col-md-6 col-md-offset-0">
+              <input type="text" id="inputPictureWidth" min="1" value="150" />
+            </div>
+          </div>
+
+           <div class="row">
+            <div class="col-md-6 col-md-offset-0">
+              <div class="widget__title">
+              <h3>Output Height</h3>
+              </div>
+            </div>
+            <div class="col-md-6 col-md-offset-0">
+              <input type="text" id="inputPictureHeight" min="1" value="55" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <button onclick="Convert(); copyToClipboard('#OutPutTextArea')">Get Code</button>
+            </div>
+          </div>
+        </div>
+      </article><!-- /widget -->
+    </div>
+    <div class="col-md-4 col-md-offset-1 text-center"> <!-- Instructions -->
+      <div class="row">
+        <article class="widget">
+          <header class="widget__header">
+            <div class="widget__title">
+              <h3>Instructions</h3>
+            </div>
+          </header>
+
+          <div class="widget__content filled widget-ui">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <p>
+                Choose a file <br> <br>
+                Select Number Of Slices <br> <br>
+                Select Number Of LEDs <br> <br>
+                Click "Get Code" <br> <br>
+                The code will be automatically copied to the clipboard
+                </p>
+              </div>
+            </div>
+          </div>
+        </article><!-- /widget -->
+      </div>
+
+      <div class="row"> <!-- File Output -->
+        <article class="widget">
+          <header class="widget__header">
+            <div class="widget__title">
+              <h3>Picture Output</h3>
+            </div>
+          </header>
+
+          <div class="widget__content filled widget-ui">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <canvas></canvas>
+              </div>
+            </div>
+
+          </div>
+        </article><!-- /widget -->
+      </div>
+    </div>    
+
+    <div class="col-md-10 col-md-offset-1 ">      
+      <div class="row">
+        <p class="hidden" id="OutPutTextArea"></p>
+      </div>
+    </div>
+  </section>
+
+<script>
+function readPic(input) 
+{
+  if(input.files && input.files[0])
+  {
+    var reader = new FileReader();
+    reader.onload = function(e)
+    {
+      $('#inputImage').attr('src', e.target.result).width(250).height(200);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function Convert() 
+{
+  document.getElementById('OutPutTextArea').innerHTML = '';  // Clear output area
+
+
+  var width  = document.getElementById('inputPictureWidth').value;
+  var height = document.getElementById('inputPictureHeight').value;
+  var image  = document.querySelector('img');
+  var canvas = document.querySelector('canvas');
+
+  canvas.width  = width;
+  canvas.height = height;
+  var context   = canvas.getContext('2d');
+
+  context.drawImage(image, 0, 0, width, height);
+
+  var imageData = context.getImageData(0, 0, width, height).data;
+  console.log(imageData);
+
+  var result = "const unsigned int array0[] = {";
+
+  for(var i = 0; i < imageData.length; i += 4) 
+  {
+    var red     = imageData[i];
+    var green   = imageData[i + 1];
+    var blue    = imageData[i + 2];
+    var opacity = imageData[i + 3];
+
+    red   = ((1 - opacity) * red)   + (opacity * red);
+    green = ((1 - opacity) * green) + (opacity * green);
+    blue  = ((1 - opacity) * blue)  + (opacity * blue);
+
+    result += "0x" + ("0" + parseInt(red, 10).toString(16)).slice(-2) + ("0" + parseInt(green, 10).toString(16)).slice(-2) + ("0" + parseInt(blue, 10).toString(16)).slice(-2);
+
+    if(i < imageData.length-4)
+    {
+      result += ", ";
+    }
+  }
+
+  result += "};";
+  document.getElementById("OutPutTextArea").innerHTML += result;
+}
+
+
+function copyToClipboard(element)
+{
+  var $temp = $("<input>");
+
+  $("body").append($temp);
+
+  $temp.val($(element).text()).select();
+
+  document.execCommand("copy");
+
+  $temp.remove();
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+////////////////////////////////////////////////////////////////////////
+//
+//   #####                                               #     #                            
+//  #     # ###### #    # ###### #####    ##   #         ##    #  ####  ##### ######  ####  
+//  #       #      ##   # #      #    #  #  #  #         # #   # #    #   #   #      #      
+//  #  #### #####  # #  # #####  #    # #    # #         #  #  # #    #   #   #####   ####  
+//  #     # #      #  # # #      #####  ###### #         #   # # #    #   #   #           # 
+//  #     # #      #   ## #      #   #  #    # #         #    ## #    #   #   #      #    # 
+//   #####  ###### #    # ###### #    # #    # ######    #     #  ####    #   ######  ####  
+//
+////////////////////////////////////////////////////////////////////////
+// Current Data Structure 
+const char[Width of image (Including a value to tell the program the picture width)] [How many pixels are in the poi (55 in this case)] [the RGB data for the pixel];
+const unsigned int array[How many pixels are in the poi (55 in this case)][The RGB data for the pixel in HEX];
+
+
+On 32-bit ARM systems like Teensy 3.x/LC:
+
+char, signed char, and unsigned char are 8 bits;
+The plain char type is unsigned by default;
+short and unsigned short are 16 bits;
+int and unsigned int are 32 bits;
+long and unsigned long are 32 bits;
+pointers are 32 bits;
+long long and unsigned long long are 64 bits;
+float is 32 bits;
+double is 64 bits;
+long double is 64 bits.
+
+
+On 8-bit AVR systems like Teensy 2.0, Arduino Uno, etc:
+
+char, signed char, and unsigned char are 8 bits;
+The plain char type is signed by default;
+short and unsigned short are 16 bits;
+int and unsigned int are 16 bits;
+pointers are 16 bits;
+long and unsigned long are 32 bits;
+long long and unsigned long long are 64 bits;
+float is 32 bits;
+double is 32 bits (this violates ISO C/C++);
+long double is 32 bits (this violates ISO C/C++).
+
+
+/*
+
+{ (R,G,B) , (R,G,B) , (R,G,B) },
+{ (R,G,B) , (R,G,B) , (R,G,B) }
+
+{ Val , Val , Val}
+{ Val , Val , Val}
+
+*/
+
+////////////////////////////////////////////////////////////////////////
+//
+// ###                                 #####                                                         
+//  #  #    #   ##    ####  ######    #     #  ####  #    # #    # ###### #####  ##### ###### #####  
+//  #  ##  ##  #  #  #    # #         #       #    # ##   # #    # #      #    #   #   #      #    # 
+//  #  # ## # #    # #      #####     #       #    # # #  # #    # #####  #    #   #   #####  #    # 
+//  #  #    # ###### #  ### #         #       #    # #  # # #    # #      #####    #   #      #####  
+//  #  #    # #    # #    # #         #     # #    # #   ##  #  #  #      #   #    #   #      #   #  
+// ### #    # #    #  ####  ######     #####   ####  #    #   ##   ###### #    #   #   ###### #    #
+//
+////////////////////////////////////////////////////////////////////////
+
+
+/*
+How the image converter works
+• Image is selected
+• Get original image width and height (Natural dimensions not affected by the browser)
+• Work out scalar (original picture height / number of leds in strip)
+• Calculate maximum resulting picture width (Using scalar) <- this value gets rounded as its impossible to have a fraction of an LED
+• Create objects of the image and canvas for later manipulation
+• Set canvas dimensions depending on calculated dimensions
+
+things to do 
+
+
+
+
+/*
+*This sketch outputs images to persistence of vision led strips
+*It uses FastLed to drive APA102 leds, sending colour values from
+*arrays held in flash memory (designated by 'const'). You need to
+*set the number of slices you have made your image into, 
+*e.g. bmp image of 60 pixels high by 150 wide
+* would give 60 num_leds and 
+* 150 slices (number of slices you have made your image into) 
+*/
+
+
+void drawImage(unsigned long time, const char picture[][totalLEDs][3], int pictureWidth) 
+{
+  currentTime = millis(); // Get the current time (Unix Time)
+  
+  while( (millis() < currentTime + (time * 1000)) && showPicture )
+  {
+    // if((column < pictureWidth) && (millis() < currentTime + (time * 1000)) && showPicture)
+    if(column < pictureWidth)
+    {
+      // for(int row = totalLEDs - 1; row > -1; row --) // row number (This may be wrong)
+      for(int row = totalLEDs; row >= 0; row --) // row number (This may be wrong)
+      {
+        currentLED[row].setRGB(
+          picture[column] [row] [redVal],   // Red
+          picture[column] [row] [greenVal], // Green
+          picture[column] [row] [blueVal]); // Blue
+        // serial << "Print" << endl;
+      }      
+      FastLED.show();
+      // Serial << FastLED.getFPS() << endl;
+      column ++;
+      delayMicroseconds(800); // How wide the image is (800 seems good)
+    }
+    else column = 0;
+    delayMicroseconds(1000); // Gap between images (1000 seems good)   
+    // button.tick(); // This is here to prevent the strip being update after a mode change
+  }
+}

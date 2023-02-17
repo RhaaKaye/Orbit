@@ -1,0 +1,208 @@
+// int main() fully working printing version
+// {  
+//   // cout << "Initial Array Length: " << sizeof(picture) << "\n" << endl;
+
+//   cout << "Compressed Picture Data: \t \t";
+//   for(int i = 0; i < sizeof(picture); i ++)
+//   {
+//     cout << picture[i];
+//   }
+//   cout << "\t" << endl;
+
+
+//   dataLength = sizeof(picture);
+
+//   cout << "Uncompressed Picture Data: \t";
+//   while(run)
+//   {
+//     if(compressedArrayindex < dataLength)
+//     {
+//       // cout << arrayPos << endl;
+//       if(picture[compressedArrayindex] == markChar)
+//       {
+//         char repeatChar = picture[compressedArrayindex + 2]; // Save the repeating value
+
+//         for(int i = 0; i < picture[compressedArrayindex + 1] - ascii; i ++) // Print repeating value
+//         {
+//           cout << repeatChar;
+//         }
+
+//         unCompressedArrayIndex = unCompressedArrayIndex + (picture[compressedArrayindex + 1] - ascii); 
+
+//         // Increment "Input Array" position to the next unrepeated value
+//         compressedArrayindex = compressedArrayindex + 3;
+//         value = compressedArrayindex;
+//       }
+
+//       else
+//       {
+//         cout << picture[compressedArrayindex];
+//         value ++;
+//         unCompressedArrayIndex ++;
+//         compressedArrayindex ++;
+//       }
+//     }
+
+//     else
+//     {
+//       value = 0;
+//       run = false;
+//       cout << endl;
+//     }
+//   }  
+// }
+
+
+// int main()
+// {  
+//   cout << "Initial Array Length: " << sizeof(picture) << "\n" << endl;
+
+//   cout << "Compressed Data: ";
+//   for(int i = 0; i < sizeof(picture); i ++)
+//   {
+//     cout << picture[i];
+//   }
+//   cout << endl;
+
+
+//   dataLength = sizeof(picture);
+
+//   cout << "Uncompressed Data: ";
+//   while(run)
+//   {
+//     if(compressedArrayindex < dataLength)
+//     {
+//       // cout << arrayPos << endl;
+//       if(picture[compressedArrayindex] == markChar)
+//       {
+//         // cout << "\n" << "RLE Start\n" << endl;
+
+//         // cout << "Mark at position: "<< compressedArrayindex << ",";
+//         // cout << "\tTotal repeats: " << picture[compressedArrayindex + 1] << ",";
+//         // cout << "\tTotal chars: "   << dataLength + (picture[compressedArrayindex + 1] - ascii - 3) << ",";
+//         // cout << "\tRepeated char: " << picture[compressedArrayindex + 2] << endl;
+
+//         char repeatChar = picture[compressedArrayindex + 2];
+
+//         // Print repeated values
+//         for(int i = 0; i < picture[compressedArrayindex + 1] - ascii; i ++) // -48 to bring ASCII char back to int
+//         {
+//           // cout << "RLE Output Array Pos: " << compressedArrayindex + i << ", ";
+//           // cout << "\tRLE Data: " << repeatChar << endl;
+//           cout << repeatChar;
+//         }
+//         // cout << compressedArrayindex << endl;
+
+//         unCompressedArrayIndex = unCompressedArrayIndex + (picture[compressedArrayindex + 1] - ascii);
+
+//         // Increment "Input Array" position to the next unrepeated value
+//         compressedArrayindex = compressedArrayindex + 3;
+
+//         value = compressedArrayindex;
+//         // cout << value << endl;
+
+//         // arrayPos += 3;
+
+//         // cout << "\nRLE End\n" << endl;
+
+
+
+//       }
+
+//       else
+//       {
+//         // cout << "Output Array Pos: " << unCompressedArrayIndex <<  ",\t";
+//         // cout << "Input Array Pos: " << compressedArrayindex << ",\t";
+//         // cout << "Uncompressed Data: " << picture[value] << endl;
+//         cout << picture[compressedArrayindex];
+//         value ++;
+//         unCompressedArrayIndex ++;
+//         compressedArrayindex ++;
+//       }
+//     }
+
+//     else
+//     {
+//       position = 0;
+//       value = 0;
+//       run = false;
+//       cout << endl;
+//     }
+//   }  
+// }
+
+
+
+
+// int main()
+// {  
+//   cout << "Initial Array Length: " << sizeof(data) << "\n" << endl;
+//   dataLength = sizeof(data);
+//   while(run)
+//   {
+//     if(arrayPos < dataLength)
+//     {
+//       // cout << arrayPos << endl;
+//       if(data[arrayPos] == markChar)
+//       {
+//         cout << "\n" << "RLE Start\n" << endl;
+
+//         cout << "Mark at position: "<< arrayPos << ",";
+//         cout << "\tTotal repeats: " << data[arrayPos + 1] << ",";
+//         cout << "\tTotal chars: "   << dataLength + (data[arrayPos + 1] - ascii - 3) << ",";
+//         cout << "\tRepeated char: " << data[arrayPos + 2] << endl;
+
+//         /* Step 1 (Update total data length to take in to account repeated chars) */
+//         dataLength = dataLength + (data[arrayPos + 1] - ascii - 3);  // update array length (- 3 to account for the 3 data bits)
+//         // cout << "\tLast data point: " << dataLength - 1 << endl;
+
+//         /* Step 2 (save the repeated char for later) */
+//         char repeatChar = data[arrayPos + 2];
+
+//         /* Step 3 (Print out repeated char) */
+//         for(int i = 0; i < data[dataPos + 1] - 48; i ++) // -48 to bring ASCII char back to int
+//         {
+//           cout << "RLE Data Pos: " << dataPos + i << ", ";
+//           cout << "\tRLE Data: " << repeatChar << endl;
+//         }
+
+
+//         /* Step 4 (update position to carry on from last repeated char) */
+//         arrayPos = arrayPos + 3;
+//         dataPos = (data[(arrayPos + 1)] - ascii);
+//         // cout << "\t" << position << endl;
+
+//         // cout << data[position + 1];
+
+//         // cout << data[position + 1] << endl;
+//         // cout << "Next position: " << position + (data[(position + 1)] - 48) << endl;
+//         // position = position + (data[(position + 1)] - 47);
+//         // cout << data[(position + 1)] - ascii << endl;
+//         // cout << "\t" << position << endl;
+
+//         /* Step 5 (Update the value pointer to be inline with the position pointer) */
+//         value = position - 2;
+
+//         arrayPos += 3;
+
+//         cout << "\nRLE End\n" << endl;
+//       }
+
+//       else
+//       {
+//         cout << "Data Pos: " << dataPos <<  ",\t" << "Array Pos: " << arrayPos << ",\t"<< "Data: " << data[value] << endl;
+//         value ++;
+//         position ++;
+//         dataPos ++;
+//         arrayPos ++;
+//       }
+//     }
+
+//     else
+//     {
+//       position = 0;
+//       value = 0;
+//       run = false;
+//     }
+//   }  
+// }

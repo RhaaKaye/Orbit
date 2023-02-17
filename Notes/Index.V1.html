@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KavaNet Control Panel</title>
+  <link rel="apple-touch-icon"                               href="img/touch-icon-iphone.png" /> 
+  <link rel="icon"             sizes="http://192xhttp://192" href="img/touch-icon.png" /> 
+  <link rel="apple-touch-icon" sizes="76x76"                 href="img/touch-icon-ipad.png" /> 
+  <link rel="apple-touch-icon" sizes="120x120"               href="img/touch-icon-iphone-retina.png" />
+  <link rel="apple-touch-icon" sizes="152x152"               href="img/touch-icon-ipad-retina.png" /> 
+  <link rel="shortcut icon"    type="image/x-icon"           href="img/favicon.ico" />
+  <link rel="stylesheet"       type="text/css"               href="css/bootstrap.min.css">
+  <link rel="stylesheet"       type="text/css"               href="css/main.min.css">
+  <link rel="stylesheet"       type="text/css"               href="css/myStyles.css">
+  <link rel="stylesheet"       type="text/css"               href="css/pe-icon-7-filled.css">
+  <link rel="stylesheet"       type="text/css"               href="css/pe-icon-7-stroke.css">
+
+  <!-- Online Frameworks -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="http://www.hivemq.com/demos/websocket-client/js/mqttws31.js" type="text/javascript"></script> -->
+
+  <!-- Offline Frameworks -->
+
+  <script src="Frameworks/MQTT.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<header class="top-bar">		
+		<div class="profile"> 
+			<div class="col-md-4">
+				<h1 class = "Nest_Name">KavaNet Control Panel</h1>
+			</div>
+
+			<div class="col-md-4">
+				<p class = "Pull_Middle" id="BigBoss_Time">Time</p>
+			</div>
+
+			<div class="col-md-4">
+				<p class = "Pull_Right" id="System_Network">WiFi Network</p>
+			</div>
+		</div>		
+	</header>
+
+	<div class="wrapper">
+		<aside class="sidebar">
+						<ul class="main-nav">
+					<li class="main-nav--active">
+						<a class="main-nav__link" href="#">
+							<!-- <span class="main-nav__icon"><i class="pe-7f-helm"></i></span> -->
+							<p class="Menu">Controls</p>
+						</a>
+					</li>
+
+					<li>
+						<a class="main-nav__link" href="System.html">
+							<!-- <span class="main-nav__icon"><i class="pe-7s-science"></i></span> -->
+							<p class ="Menu"> Sensor Data </p>
+						</a>
+					</li>
+
+          <li class="main-nav">
+            <a class="main-nav__link" href="Image Converter.html">
+             <!-- <span class="main-nav__icon"><i class="pe-7s-science"></i></span> -->
+             <p class="Menu">Poi Image Converter</p>
+            </a>
+          </li>
+
+				</ul> <!-- /main-nav -->			
+		</aside> <!-- /sidebar -->
+		
+		<section class="content">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4 col-md-4 text-center col-md-offset-4"> <!-- Switches -->
+					<article class="widget">
+						<header class="widget__header">
+							<div class="widget__title">
+								<h3>Switches</h3>
+							</div>
+						</header>
+
+						<div class="widget__content filled widget-ui">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<div class="switch-showcase">
+										<!-- <div class="row">
+											LED1
+											<input type="checkbox" id="LED1" class="sw"  />
+											<label class="switch2 red" for="LED1"></label> 
+										</div>
+
+										<div class ="row">
+											LED2
+											<input type="checkbox" id="LED2" class="sw"  />
+											<label class="switch2 green" for="LED2"></label>
+										</div> -->
+
+										<div class ="row">
+											Plug
+											<input type="checkbox" id="Plug" class="sw"  />
+											<label class="switch2 blue" for="Plug"></label>
+										</div>
+
+                    <!-- <div class ="row">
+                      Detection
+                      <input type="checkbox" id="Detection" class="sw"  />
+                      <label class="switch2 orange" for="Detection"></label>
+                    </div> -->
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</article><!-- /widget -->
+				</div>
+			</div>
+      
+      <div class="row">
+        <div class="col-md-10 text-center col-md-offset-1"> <!-- Switches -->
+          <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=matthewjkavanagh%40gmail.com&amp;color=%231B887A&amp;src=rtjh4l9r7jvalr70aej2m6gjro%40group.calendar.google.com&amp;color=%23875509&amp;src=dku8eis2bbvnetf73n56i2u2qs%40group.calendar.google.com&amp;color=%23ffffff&amp;src=p%23weeknum%40group.v.calendar.google.com&amp;color=%238C500B&amp;src=pbounust2egbd3pp0drl2p2uuo%40group.calendar.google.com&amp;color=%23B1440E&amp;ctz=Europe%2FLondon" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+
+		</section> <!-- /content -->
+
+	</div>	 
+</body>
+
+
+<script>
+////////////////////////////////////////////////////////////////////////
+//
+//       #                                                          
+//       #   ##   #    #   ##    ####   ####  #####  # #####  ##### 
+//       #  #  #  #    #  #  #  #      #    # #    # # #    #   #   
+//       # #    # #    # #    #  ####  #      #    # # #    #   #   
+// #     # ###### #    # ######      # #      #####  # #####    #   
+// #     # #    #  #  #  #    # #    # #    # #   #  # #        #   
+//  #####  #    #   ##   #    #  ####   ####  #    # # #        #   
+//
+////////////////////////////////////////////////////////////////////////
+var client = new Messaging.Client("192.168.1.46", 1884, "Web Page");
+var options = 
+{
+  timeout: 3,
+  onSuccess: function() 
+  {
+    console.log("Connection Established");
+    
+    var Update = new Messaging.Message("U");
+    Update.destinationName = "Web Interface";
+    Update.qos = 0;
+    client.send(Update);
+
+    client.subscribe('Temperature Miner', {qos: 2}); console.log('Subscribed to temperature miner');
+    client.subscribe('Big Boss', {qos: 2}); console.log('Subscribed to big boss');
+    client.subscribe('Plug', {qos: 2}); console.log('Subscribed to plug');
+    client.subscribe('Network Scanner', {qos: 2}); console.log('Subscribed to network scanner');
+
+    
+  
+    
+  },
+  
+  onFailure: function(message) 
+  {
+    console.log("Connection Failed" + message.errorMessage);
+  }
+};
+
+client.onConnectionLost = function(responseObject) 
+{
+  alert("connection lost: " + responseObject.errorMessage);
+};
+
+client.onMessageArrived = function(message) 
+{
+  console.log(message.payloadString);
+
+  if(message.destinationName == "Temperature Miner") //////////////////////////// Big Boss
+  {
+    if(message.payloadString.substring(0,1) == "1") 
+    {
+      if(message.payloadString.substring(2,3) == "1") $('#LED1').prop("checked",true);
+      else if(message.payloadString.substring(2,3) == "0") $('#LED1').prop("checked",false);
+    }
+
+    if(message.payloadString.substring(0,1) == "2") 
+    {
+      if(message.payloadString.substring(2,3) == "1") $('#LED2').prop("checked",true);
+      else if(message.payloadString.substring(2,3) == "0") $('#LED2').prop("checked",false);
+    }   
+
+  }
+  if(message.destinationName == "Plug")
+  {
+    if(message.payloadString.substring(0,1) == "P") 
+    {
+      if(message.payloadString.substring(2,3) == "1") $('#Plug').prop("checked",true);
+      else if(message.payloadString.substring(2,3) == "0") $('#Plug').prop("checked",false);
+    }
+  }  
+}
+
+$('#LED1').click(function() 
+{ 
+	if(document.getElementById('LED1').checked) updateLED(1, 1);
+	else if(!document.getElementById('LED1').checked) updateLED(1, 0);
+});
+
+$('#LED2').click(function() 
+{ 
+	if(document.getElementById('LED2').checked)
+	{
+		console.log("LED 2 On");
+    updateLED(2, 1) 
+	}
+	else
+  {
+		console.log("LED 2 Off");
+    updateLED(2, 0) 
+	}
+});
+
+$('#Plug').click(function() 
+{ 
+	if(document.getElementById('Plug').checked)
+	{
+		console.log("Plug On Button");
+    updatePlug(1);
+	}
+	else
+  {
+		console.log("Plug Off Button");
+		updatePlug(0);
+	}
+});
+
+// $('#Detection').click(function() 
+// { 
+//   if(document.getElementById('Detection').checked)
+//   {
+//     console.log("Detection On");
+  
+//   }
+//   else
+//   {
+//     console.log("Detection Off");
+       
+//   }
+// });
+
+
+window.onload = function() 
+{
+  console.log("Loaded");
+  client.connect(options);
+};
+
+function updateLED(led, state)
+{
+  var Update = new Messaging.Message(led + " " + state + " Web Interface");
+  Update.destinationName = "Web Interface";
+  Update.qos = 0;
+
+  client.send(Update);
+}
+
+function updatePlug(state)
+{
+  var Update = new Messaging.Message("P " + state + " Web Interface");
+  Update.destinationName ="Web Interface";
+  Update.qos = 0;
+
+  client.send(Update);
+}
+
+
+// getUpdateData();
+// window.setInterval(getUpdateData, 1000); //update the sensordata 5 seconds
+</script>
+</html>

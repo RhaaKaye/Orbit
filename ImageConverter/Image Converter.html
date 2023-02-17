@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118291385-1"></script>
+  <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-118291385-1'); </script>
+  <!-- Google Analytics -->
+
+  <!-- Title -->
+  <title>Kavanet</title>
+
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../../../../favicon.ico">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- CSS Global Compulsory -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="assets/vendor/bootstrap/offcanvas.css"> -->
+
+  <!-- CSS Global Icons -->
+  <!-- <link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/icon-line/css/simple-line-icons.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/icon-etlinefont/style.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/icon-line-pro/style.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/icon-hs/style.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsparallaxer.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsscroller/scroller.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/dzsparallaxer/advancedscroller/plugin.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/animate.css"> -->
+  <link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css">
+  <!-- <link rel="stylesheet" href="assets/vendor/hs-megamenu/src/hs.megamenu.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css"> -->
+  <!-- <link rel="stylesheet" href="assets/vendor/fancybox/jquery.fancybox.css"> -->
+
+
+  <!-- CSS Unify -->
+  <link rel="stylesheet" href="assets/css/unify-core.css">
+  <link rel="stylesheet" href="assets/css/unify-components.css">
+  <link rel="stylesheet" href="assets/css/unify-globals.css">
+  <!-- <link rel="stylesheet" href="assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css"> -->
+
+  <!-- CSS Customization -->
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+  <main>
+
+    <section class="g-bg-gray-light-v5 g-py-10" >
+      <div class="container">
+        <div class="d-sm-flex text-center">
+          <div class="align-self-center">
+            <h2 class="h3 g-font-weight-300 w-100 g-mb-10 g-mb-0--md">Orbit Image Converter</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container g-py-20 ">
+      <div class="row">
+        <div class="col-md-6">     
+          <!-- File Inputs -->
+          <form class="g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30">
+            <div class="form-group mb-0">
+              <h4 align="center">File Input (change this to advanced file input)</h4>
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <p align="center"><img id="inputImage"/></p>
+                <p align="right"><input name="my-image" onchange="readPic(this);" type="file"/></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <!-- Text Input -->
+                <div class="form-group g-mb-20">
+                  <p class="g-mb-10 centre">LED In Poi</p>
+                  <input id="numOfLEDs" class="form-control form-control-md rounded-0" type="text"  value="55">
+                </div>
+                <!-- End Text Input -->
+              </div>
+
+              <div class="col-lg-6">
+                <!-- Text Input -->
+                <div class="form-group g-mb-20">
+                  <p class="g-mb-10 centre">Pics / Rotation</p>
+                  <input id="numOfPics" class="form-control form-control-md rounded-0" type="text"  value="3">
+                </div><!-- End Text Input -->
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xl-12">
+                <p align="center">
+                  <button type="button" class="btn btn-primary btn-lg g-mr-10 g-mb-15" onclick="Convert(); copyToClipboard('#OutPutTextArea')" id="Get">  Get Code</button>
+                </p>
+              </div>
+            </div>
+          </form>
+          <!-- End File Inputs -->
+        </div>
+
+        <div class="col-md-6"><!-- Picture Preview -->
+          <form class="g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30">
+            <div class="form-group mb-0">
+              <h4 align="center">Picture Preview</h4>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 centre">
+                <canvas id="picturePreviewCanvas"></canvas>
+              </div>
+            </div>
+          </form>
+          <!-- End Picture Preview -->
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6"><!-- Instructions --> 
+          <form class="g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30">
+            <div class="form-group mb-0">
+              <h4 align="center">Instructions</h4>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <p>
+                Choose a file <br>
+                Select Number Of LEDs <br>
+                Click "Get Code" <br>
+                The resulting code will be automatically copied to the clipboard
+                </p>
+              </div>
+            </div>
+          </form>
+        </div><!-- End Instructions -->
+        
+        <div class="col-md-6"><!-- Information --> 
+          <form class="g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30">
+            <div class="form-group mb-0">
+              <h4 align="center">Information</h4>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 text-right">
+                  <p class="info">Original Width</p>
+                  <p class="info">Original Height</p>
+                </div>
+
+                <div class="col-xs-2 col-sm-2 col-md-2 text-left">
+                  <p class="info" id="OriginalWidth"></p>
+                  <p class="info" id="OriginalHeight"></p>
+                </div>
+              
+
+                <div class="col-xs-4 col-sm-4 col-md-4 text-right">
+                  <p class="info">Output Width</p>
+                  <p class="info">Output Height</p>
+                </div>
+
+                <div class="col-xs-2 col-sm-2 col-md-2 text-left">
+                  <p class="info" id="OutputWidth"></p>
+                  <p class="info" id="OutputHeight"></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                  <p class="info">Scalar</p>
+                  <p class="info">Total Pixels In Picture</p>
+                  <p class="info">Size in memory
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6 text-left">
+                  <p class="info" id="Scalar"></p> 
+                  <p class="info" id="TotalPixelsInPicture"></p>   
+                  <p class="info" id="SizeInMemory"></p>
+                </div>
+              </div>
+          </form>
+        </div><!-- End Infomation -->
+      </div>
+
+          
+      <!-- <div class="row hidden" style="display: none;"> -->
+        <div class="row ">
+        <canvas  id="calculationImageCanvas"></canvas>
+        <canvas  id="upsideDownCanvas"></canvas>
+        <p       id="OutPutTextArea"></p>
+      </div>
+
+    </section>
+
+    <!-- Up Arrow -->
+    <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{"bottom": 15,"right": 15}' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
+      <i class="hs-icon hs-icon-arrow-top"></i>
+    </a>
+</main>
+
+<!-- JS Global Compulsory -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+<script src="assets/vendor/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+<!-- <script src="assets/vendor/bootstrap/offcanvas.js"></script> -->
+
+<!-- JS Implementing Plugins -->
+<!-- <script src="assets/vendor/hs-megamenu/src/hs.megamenu.js"></script> -->
+<!-- <script src="assets/vendor/dzsparallaxer/dzsparallaxer.js"></script> -->
+<!-- <script src="assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script> -->
+<!-- <script src="assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script> -->
+<!-- <script src="assets/vendor/masonry/dist/masonry.pkgd.min.js"></script> -->
+<!-- <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script> -->
+<!-- <script src="assets/vendor/slick-carousel/slick/slick.js"></script> -->
+<!-- <script src="assets/vendor/fancybox/jquery.fancybox.min.js"></script> -->
+<!-- <script src="assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js"></script> -->
+<!-- <script src="assets/vendor/jquery.filer/js/jquery.filer.min.js"></script> -->
+
+<!-- JS Unify -->
+<script src="assets/js/hs.core.js"></script>
+
+<!-- <script src="assets/js/components/hs.header.js"></script> -->
+<script src="assets/js/helpers/hs.hamburgers.js"></script>
+<!-- <script src="assets/js/components/hs.popup.js"></script> -->
+
+<!-- <script src="assets/js/components/hs.cubeportfolio.js"></script> -->
+
+<!-- <script src="assets/js/components/hs.popup.js"></script> -->
+<!-- <script src="assets/js/components/hs.carousel.js"></script> -->
+
+<!-- <script src="assets/js/components/hs.go-to.js"></script> -->
+
+<!-- <script src="assets/js/helpers/hs.focus-state.js"></script> -->
+<!-- <script src="assets/js/components/hs.file-attachement.js"></script> -->
+
+<!-- JS Custom -->
+<script src="assets/js/custom.js"></script>
+<script src="Image Converter.js"></script>
+
+<!-- JS Plugins Init. -->
+<script>
+  $(document).on('ready', function () 
+  {
+    // initialization of go to
+    // $.HSCore.components.HSGoTo.init('.js-go-to');
+
+    // initialization of carousel
+    // $.HSCore.components.HSCarousel.init('.js-carousel');
+
+    // initialization of forms
+    // $.HSCore.components.HSFileAttachment.init('.js-file-attachment');
+    // $.HSCore.helpers.HSFocusState.init();      
+  });
+
+  $(window).on('load', function () 
+  {
+    // initialization of header
+    // $.HSCore.components.HSHeader.init($('#js-header'));
+    $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+    // initialization of HSMegaMenu component
+    // $('.js-mega-menu').HSMegaMenu({
+      // event: 'hover',
+      // pageContainer: $('.container'),
+      // breakpoint: 991
+    // });
+    // $.HSCore.components.HSCubeportfolio.init('.cbp');
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+/* Add here all your css styles (customizations) */
+html 
+{
+  height: 100%;
+  /*overflow: auto;*/
+  /*overflow-y: hidden;*/
+}
+
+body 
+{
+  min-height: 100%;
+}
+
+label
+{
+	align-content: center;
+}
+
+.Nest_Name
+{
+	margin-top: 15px;
+	font-size: 28px;
+	margin-left: 13px;
+}
+
+.profile
+{
+	width: 100%;
+}
+
+.Pull_Right
+{
+	margin-top: 20px;
+	font-size: 20px;
+	text-align:right;
+}
+
+.sidebar 
+{
+	color: black;
+}
+
+.main-nav
+{
+	color: black;
+}
+
+.Pull_Middle
+{
+	margin-top: 20px;
+	/*font-size: 20px;*/
+	text-align:center;
+}
+
+.widget__title
+{
+	width: 100%
+}
+
+.centre
+{
+	text-align: center;
+}
+
+.Menu
+{
+	margin-left: 10%;
+}
+
+input
+{
+	text-align: center;
+}
+
+
+.wrapper 
+{
+	top: -1px;
+	height: 93.4%;
+	margin: 0px auto;
+	overflow: hidden;
+	min-height: 10px
+}
+
+.Orbit
+{
+	color: black;
+}
+
+/*input 
+{ 
+  text-align: center; 
+  width: 50%;
+  padding-top: 
+}*/
+
+/*canvas
+{
+	padding-top: 10px;
+}*/
+
+#ControlCanvas
+{
+	max-width: 100%;
+	min-height: 100%;
+	border: 1px solid orange;
+}
+
+#outputImageCanvas, #inputImage
+{
+	padding-top: 10px;
+	/*max-height: 100px;*/
+	max-width: 100%;
+}
+
+/*#inputImage
+{
+	padding-top: 10px;
+	max-height: 100px;
+	max-width: 100%;
+}*/
+
+.info
+{
+	padding-top: 5px;
+	padding-left: 0px;
+}
+
+canvas.hidden
+{
+	visibility: hidden;
+}
+
+p.hidden
+{
+	visibility: hidden;
+}
+
+div.hidden
+{
+	visibility: hidden;
+}

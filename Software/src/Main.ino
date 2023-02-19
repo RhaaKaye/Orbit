@@ -273,25 +273,27 @@ void setup() {
 void loop() {
   button.tick();
 
-  if (menu == patterns)  // Pattern Menu
-  {
-    if (pattern == 1)
+  // Pattern Menu
+  if (menu == patterns) {
+    if (pattern == 1) {
       picturesPattern();
-    else if (pattern == 2)
+    } else if (pattern == 2) {
       rainbowPattern();
-    else if (pattern == 3)
+    } else if (pattern == 3) {
       colourCyclePattern();
-    else if (pattern == 4)
+    } else if (pattern == 4) {
       colourFadePattern();
-    else if (pattern == 5)
+    } else if (pattern == 5) {
       firePattern();
+    }
   }
 
-  else if (menu == options)  // Options Menu
-  {
-    if (option == 1)
+  // Options Menu
+  else if (menu == options) {
+    if (option == 1) {
       changeBrightnessOption();
-    else if (option == 2)
+    } else if (option == 2) {
       singleColour();
+    }
   }
 }

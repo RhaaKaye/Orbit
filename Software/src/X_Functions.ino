@@ -47,6 +47,7 @@ void drawImage(unsigned long time, const char picture[][totalLEDs][3], int pictu
 //
 //////////////////////////////////////////////////////////////////////////////
 void pictures1() {
+  // drawPicture(10, dna);
   drawPicture(10, firePic);
   drawPicture(10, squares);
   drawPicture(10, AX);

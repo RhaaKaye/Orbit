@@ -9,7 +9,6 @@
 // ######   ####    #     #    ####  #    #
 //
 ////////////////////////////////////////////////////////////////////////
-// *NB* redo everythign about this section, it's terrible
 void click() {
   Serial << "Click" << endl;
 

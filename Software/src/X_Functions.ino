@@ -26,8 +26,10 @@ void drawImage(unsigned long time, const char picture[][totalLEDs][3], int pictu
       delayMicroseconds(40);  // How wide the image is (800 used to be good but now 40 seems better, figure out why) *NB*
     }
 
-    else
+    else {
       column = 0;
+    }
+
     delayMicroseconds(1000);  // Gap between images (1000 seems good)
     button.tick();            // This is here to prevent the strip being updated after a mode change
   }
@@ -56,7 +58,6 @@ void pictures1() {
   drawPicture(10, R);
   drawPicture(10, M);
   drawPicture(10, BT);
-
 
   // drawPicture(1, BW); // This breaks the poi for some reason, figure out why (Sets doubleClickActive to 3) *NB*
 

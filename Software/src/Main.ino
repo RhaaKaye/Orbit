@@ -1,16 +1,4 @@
 ////////////////////////////////////////////////////////////////////////
-//  Matthew Kavanagh
-//
-//  Project Orbit
-//  Orbit V3.ino (Object Orientated)
-//  2018
-//  *********
-//
-// Add version history
-// 10 / 07 / 2017 V1.0 Basic functionality
-// Some time later V1.1 Image display improvements
-// A lot of time later V2.0 Button and patterns added
-////////////////////////////////////////////////////////////////////////
 //  Notes
 //
 //  VERY IMPORTANT, when testing high intensity patterns
@@ -201,7 +189,6 @@ int pattern = 1;  // The current pattern being displayed (Maybe rename the varia
 
 // Image Generation Variables (Don't remove)
 bool showPicture = true;  // Used for images
-// int  currentTime; // This might be needed *NB*
 
 // Button navigation
 bool clickActive = false;        // False
@@ -210,8 +197,6 @@ bool doubleClickActive = false;  // False
 
 bool patternLongPressActive = false;
 bool optionsLongPressActive = false;
-
-// bool menu = patterns;
 
 enum PatternMenu { patterns,
                    options };

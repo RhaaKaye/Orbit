@@ -61,12 +61,12 @@
 #include "Streaming.h"
 
 // Effects
-#include "ChangeBrightness.h"
-#include "ColourCycle.h"
-#include "ColourFade.h"
-#include "Crisscross.h"
-#include "Fire.h"
-#include "Rainbow.h"
+#include "effects/ChangeBrightness.h"
+#include "effects/ColourCycle.h"
+#include "effects/ColourFade.h"
+#include "effects/Crisscross.h"
+#include "effects/Fire.h"
+#include "effects/Rainbow.h"
 
 // Images
 #include "Images.h"

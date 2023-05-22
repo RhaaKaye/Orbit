@@ -14,4 +14,4 @@ Shout out to [Pov Pixel Poi PJRC forum thread](https://forum.pjrc.com/threads/30
 
 The Poi uses a teensy 3.2, a strip of APA201 LEDs and a TP4056 LiPo charger
 
-More info to follow
+[More info on my website, including a build guide](https://kavanet.io/projects/820e97629923481c9c2fcd54725f2a94)

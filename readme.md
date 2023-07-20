@@ -19,4 +19,6 @@ Things to do
 * How to install and run the code
 * Link to the image converted (Talk about it)
 
+[My build guide](https://kavanet.io/projects/820e97629923481c9c2fcd54725f2a94)
+
 More info to follow

@@ -1,5 +1,5 @@
 # Orbit poi
-<img src="Pictures/Long Exposures/DSC_0051.JPG"/>
+<img src="Old stuff/Pictures/Long Exposures/DSC_0051.JPG"/>
 
 ## Tech used
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?&logo=arduino&logoColor=white)&nbsp;

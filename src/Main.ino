@@ -61,12 +61,12 @@
 #include "Streaming.h"
 
 // Effects
-#include "ChangeBrightness.h"
-#include "ColourCycle.h"
-#include "ColourFade.h"
-#include "Crisscross.h"
-#include "Fire.h"
-#include "Rainbow.h"
+#include "effects/ChangeBrightness.h"
+#include "effects/ColourCycle.h"
+#include "effects/ColourFade.h"
+#include "effects/Crisscross.h"
+#include "effects/Fire.h"
+#include "effects/Rainbow.h"
 
 // Images
 #include "Images.h"
@@ -224,16 +224,16 @@ void setup() {
 
   // Set LED Strip Parameters
   // FastLED.addLeds<APA102, BGR >(currentLED, totalLEDs);
-  FastLED.addLeds<APA102, data, clock, BGR, DATA_RATE_MHZ(24)>(currentLED, totalLEDs);  // May not need to specify the data rate *NB*
+  FastLED.addLeds<APA102, data, clock, BGR, DATA_RATE_MHZ(24)>(currentLED, totalLEDs);  // * May not need to specify the data rate
 
   FastLED.setBrightness(LEDBrightness * 2.55);
   FastLED.setCorrection(0xFFB0F0);
   FastLED.setDither(1);
 
   // Set Button Parameters
-  button.setDebounceTicks(20);  // 20
-  button.setClickTicks(350);    // 350
-  button.setPressTicks(250);    // 250
+  button.setDebounceTicks(20);  //* 20
+  button.setClickTicks(350);    //* 350
+  button.setPressTicks(250);    //* 250
 
   // Setup Button Functions
   button.attachLongPressStart(longPress);
@@ -258,7 +258,7 @@ void setup() {
 void loop() {
   button.tick();
 
-  // Pattern Menu
+  //? Pattern Menu
   if (menu == patterns) {
     if (pattern == 1) {
       picturesPattern();
@@ -273,7 +273,7 @@ void loop() {
     }
   }
 
-  // Options Menu
+  //? Options Menu
   else if (menu == options) {
     if (option == 1) {
       changeBrightnessOption();

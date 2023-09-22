@@ -8,6 +8,8 @@
 
 ## Info
 
+[Visual Poi 2nd Version](https://github.com/InvisiBug/Orbit/releases/tag/v2)
+
 This is my version of [Visual Poi](https://www.lighttoys.cz/product/visual-poi-v4-classic/) which were mad expensive so I made my own
 
 Shout out to [Pov Pixel Poi PJRC forum thread](https://forum.pjrc.com/threads/30020-Teensy-APA102-POV-Poi-Pixel-Poi-Build-Tutorial) I couldn't have made these without them
